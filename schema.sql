@@ -63,4 +63,35 @@ SELECT * from animals WHERE neutered = true;
 SELECT * from animals WHERE name not like '%Gabumon%';
 SELECT * from animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
-COMMIT
+COMMIT;
+
+--create table vets
+CREATE TABLE vets (
+  id SERIAL,
+  name VARCHAR(100),
+  age INT,
+  date_of_graduation DATE,
+  PRIMARY KEY(id)
+);
+
+--create table specializations
+CREATE TABLE specializations (
+  id SERIAL,
+  vet_id INT,
+  species_id INT,
+  PRIMARY KEY(id),
+  FOREIGN KEY(vet_id) REFERENCES vets(id),
+  FOREIGN KEY(species_id) REFERENCES species(id)
+);
+
+--create table visits
+CREATE TABLE visits (
+  id SERIAL,
+  animal_id INT,
+  vet_id INT,
+  date_of_visit DATE,
+  PRIMARY KEY(id),
+  FOREIGN KEY(animal_id) REFERENCES animals(id),
+  FOREIGN KEY(vet_id) REFERENCES vets(id)
+);
+

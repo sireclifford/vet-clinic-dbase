@@ -75,3 +75,122 @@ SELECT name FROM animals WHERE escape_attempts = (SELECT MAX(escape_attempts) FR
 SELECT MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
 --What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
+
+
+-- QUERIES TO QUESTIONS REGARDING JOIN TABLES
+-- last animal seen by William Tatcher
+SELECT
+  animals.name
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+WHERE
+  visits.vet_id = 1
+ORDER BY
+  visits.date_of_visit DESC
+LIMIT
+  1;
+
+-- Number of animals seen by Stephanie Mendez
+SELECT
+  animals.name,
+  COUNT(*)
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+WHERE
+  visits.vet_id = 3
+GROUP BY
+  animals.name;
+
+-- list all vets and their specialties
+SELECT
+  vets.name,
+  specialization.species_id
+FROM
+  vets
+  LEFT JOIN specialization ON vets.id = specialization.vet_id;
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020
+SELECT
+  animals.name
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+WHERE
+  visits.vet_id = 3
+  AND visits.date_of_visit BETWEEN date '2020-04-01'
+  AND date '2020-08-30';
+
+-- Animal with the most visits to vet
+SELECT
+  animals.name
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+GROUP BY
+  animals.name
+ORDER BY
+  COUNT(*) DESC
+LIMIT
+  1;
+
+-- Maisy Smith's first visit
+SELECT
+  animals.name
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+WHERE
+  visits.vet_id = 2
+  AND visits.date_of_visit = (
+    SELECT
+      MIN(date_of_visit)
+    FROM
+      visits
+    WHERE
+      visits.vet_id = 2
+  );
+
+-- Details for most recent visit: animal information, vet information, and date of visit
+SELECT
+  animals.name,
+  visits.vet_id,
+  visits.date_of_visit
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+WHERE
+  visits.date_of_visit = (
+    SELECT
+      MAX(date_of_visit)
+    FROM
+      visits
+  );
+
+-- Number of visits with a vet that did not specialize in a particular species
+SELECT
+  COUNT(visits.animal_id)
+FROM
+  visits
+  INNER JOIN vets ON visits.vet_id = vets.id
+  INNER JOIN animals ON animals.id = visits.animal_id
+  INNER JOIN specialization ON specialization.species_id = vets.id
+WHERE
+  specialization.species_id != animals.species_id;
+
+-- Most species visits for Maisy
+SELECT
+  animals.species_id,
+  COUNT(*)
+FROM
+  animals
+  INNER JOIN visits ON animals.id = visits.animal_id
+WHERE
+  visits.vet_id = 2
+GROUP BY
+  animals.species_id
+ORDER BY
+  COUNT(*) DESC
+LIMIT
+  1;
