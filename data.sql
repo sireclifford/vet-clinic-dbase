@@ -12,6 +12,7 @@ INSERT INTO animals (id, name, date_of_birth, escape_attempts, neutered, weight_
   INSERT INTO animals (id, name, date_of_birth, escape_attempts, neutered, weight_kg) 
   VALUES (4, 'Devimon', '2017-05-12', 5, true, 11);
 
+
   --insert into owners table
   INSERT INTO owners (full_name, age) VALUES ('Sam Smith', 34);
   INSERT INTO owners (full_name, age) VALUES ('Jennifer Orwell', 19);

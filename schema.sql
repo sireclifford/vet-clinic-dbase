@@ -63,4 +63,4 @@ SELECT * from animals WHERE neutered = true;
 SELECT * from animals WHERE name not like '%Gabumon%';
 SELECT * from animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
-COMMIT;
+COMMIT
