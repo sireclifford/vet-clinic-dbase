@@ -54,3 +54,10 @@ CREATE TABLE medical_histories_treatments
     CONSTRAINT fk_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories (id) ON DELETE CASCADE,
     CONSTRAINT fk_treatments FOREIGN KEY (treatment_id) REFERENCES treatments (id) ON DELETE CASCADE
 )
+
+
+CREATE INDEX fk_patients_index ON medical_histories(patient_id);
+CREATE INDEX fk_invoices_index ON invoices_items(invoice_id);
+CREATE INDEX fk_treatments_index ON invoices_items(treatment_id);
+CREATE INDEX fk_treatments_index ON medical_histories_treatments(treatment_id);
+CREATE INDEX fk_medical_histories_index ON medical_histories_treatments(treatment_id);
