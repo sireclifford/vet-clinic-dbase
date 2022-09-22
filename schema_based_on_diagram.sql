@@ -60,4 +60,4 @@ CREATE INDEX fk_patients_index ON medical_histories(patient_id);
 CREATE INDEX fk_invoices_index ON invoices_items(invoice_id);
 CREATE INDEX fk_treatments_index ON invoices_items(treatment_id);
 CREATE INDEX fk_treatments_index ON medical_histories_treatments(treatment_id);
-CREATE INDEX fk_medical_histories_index ON medical_histories_treatments(treatment_id);
+CREATE INDEX fk_medical_histories_index ON medical_histories_treatments(medical_history_id);
