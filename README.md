@@ -14,11 +14,23 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 ## Authors
 
-👤 **Author1**
+👤 **Onomeh Onwuanibe**
 
-- GitHub: [@sireclifford](https://github.com/sireclifford)
-- Twitter: [@sire_clifford](https://twitter.com/sire_clifford)
+- GitHub: [@githubhandle](https://github.com/Estherstarr/)
+- Twitter: [@twitterhandle](https://twitter.com/AnibeEsther)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/onwuanibeonome)
+
+👤 **Clifford Owusu**
+
+- GitHub: [@githubhandle](https://github.com/sireclifford)
+- Twitter: [@twitterhandle](https://twitter.com/sire_clifford)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/sireclifford)
+
+👤 **Abdelhadi Hireche**
+
+- GitHub: [@aeh1707](https://github.com/aeh1707)
+- Twitter: [@aeh1707](https://twitter.com/aeh1707)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/abdelhadi-hireche)
 
 ## 🤝 Contributing
 
